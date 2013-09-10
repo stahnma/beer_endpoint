@@ -19,6 +19,7 @@ rescue
 end
 
 set :port, 8334
+set :bind, '0.0.0.0'
 
 get '/' do
    whats_on_tap(session)

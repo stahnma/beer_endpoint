@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>The Beer at the Puppet Labs HQ</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="content-language" content="EN">
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="http://puppetlabs.com/sites/default/files/css/css_pbm0lsQQJ7A7WCCIMgxLho6mI_kBNgznNUWmTWcnfoE.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="http://puppetlabs.com/sites/default/files/css/css_dGYDLbc-S6u7-47scH4T23mAMlhJc2u-kQAy1pGqLjw.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="http://puppetlabs.com/sites/default/files/css/css_yBmM5j2UH5ssGSp9g6adXtkoEmkICVXdrws72f9Tlfw.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="http://puppetlabs.com/sites/default/files/css/css_SJIMTPevqZ2kfsWUv381hqa_kp1GO9ynvz-KULUxlB4.css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="http://puppetlabs.com/sites/default/files/css/css_Oot8Tgs-x9yEgSX7lZwYgLmTAasl_iyKJxbfB705Xvo.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="http://puppetlabs.com/sites/default/files/css/css_W3GpSTNeu7BY6wMDcwi62-WLyWpQrMbIXiCsCqtMXIo.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="http://puppetlabs.com/sites/default/files/css/css_0JO140gU3dbqe5Z9kFCqp_jC_NvfLDgg_HfJy-kjueg.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="http://puppetlabs.com/sites/default/files/css/css_wigS70piKQxAQ-PhuV0Kv5yYuTDEoD4yq0VyEj5L7HY.css" media="all" />
+  </head>
+  <body>
+
+    <table cellpadding="5" cellspacing="0" border="0">
+      <tr>
+       <td colspan=100%>
+         <img src="http://puppetlabs.com/sites/default/files/PL_logo_horizontal_RGB_0.svg" height="104" width="400"/> <font size=7>Office Kegs</font>
+       </td>
+      </tr>
+      <tr>
+          <% count = 0 %>
+          <% @kegerator.each do |keg| %>
+          <% count = count +1 %>
+        <td align="center" valign="top">
+          <table cellpadding="0" cellspacing="0" border="0" style="border:3px; border-color: #FFFFFF; border-style:solid;">
+              <td><b><%= keg['tap'] %></b></td>
+            </tr>
+            <tr>
+                <td colspan="2" width="100%" align="left" valign="top" style="padding:10px; margin:0px;">
+                <h2><%= keg['brewery'] %></h2>
+                <h1><%= keg['beer_name'] %></h1>
+                Style: <%= keg['style'] %> <br/>
+                Beer Advocate: <a href='<%= keg['link'] %>'>Link</a> <br />
+                Abv: <%= keg['abv'].gsub('%', '') %>% <br />
+                Tap Date: <%= keg['tap_date'] %><br />
+              </td>
+          </table>
+        </td>
+          <% end %>
+      <tr>
+        <td colspan=100% style="font-size:10px;text-align:center;">&copy; <%= Time.now.year %> Kerminator Frogbot and Puppet Labs </td>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

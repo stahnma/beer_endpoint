@@ -20,6 +20,12 @@ end
 
 set :port, 8334
 set :bind, '0.0.0.0'
+set :erb, :trim => '-'
+
+get '/beer' do
+  @kegerator = JSON.parse(whats_on_tap(session))
+  erb :index
+end
 
 get '/' do
    whats_on_tap(session)

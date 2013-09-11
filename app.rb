@@ -22,13 +22,14 @@ set :port, 8334
 set :bind, '0.0.0.0'
 set :erb, :trim => '-'
 
-get '/beer' do
-  @kegerator = JSON.parse(whats_on_tap(session))
+get '/' do
+  @kegerator = whats_on_tap(session)
   erb :index
 end
 
-get '/' do
-   whats_on_tap(session)
+get '/api/v1/beer' do
+  content_type :json
+  whats_on_tap(session).to_json
 end
 
 def whats_on_tap(session)
@@ -52,5 +53,5 @@ def whats_on_tap(session)
     beertap[:tap_date]  = row[6]
     kegerator << beertap
   end
-  kegerator.to_json
+  kegerator
 end

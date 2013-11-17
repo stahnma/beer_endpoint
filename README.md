@@ -9,21 +9,14 @@ Beer Endpoint for Kegs at Puppet Labs
 Wow, I still hate ruby deployments.
 
 
-Requirements
+Try `make srpm`
 
-  * libxml2-devel
-  * libxslt
-  * make
-  * gcc
-  * gcc-c++
-  * ruby-devel
-  * bundler (this is the wosrt), I'll make an RPM soon
 
-  bundle install
-  bundle exec ./app
+Then through that in Mock.
+
+Then...install it.
 
 
 #TODO
 
-  * Make an RPM
   * Make init scripts

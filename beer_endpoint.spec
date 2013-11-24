@@ -104,6 +104,7 @@ popd
 mkdir -p $RPM_BUILD_ROOT/opt/%{name}/app/views
 cp -pr %{name}-%{version}/app.rb $RPM_BUILD_ROOT/opt/%{name}/app
 cp -pr %{name}-%{version}/views $RPM_BUILD_ROOT/opt/%{name}/app
+cp -pr %{name}-%{version}/public $RPM_BUILD_ROOT/opt/%{name}/public
 
 
 # Fix shebang line of scripts
@@ -113,7 +114,7 @@ find $RPM_BUILD_ROOT -type f | xargs -n4 sed -i -e '1s,^#!.*ruby$,#!/opt/%{name}
 
 %post
 echo "Installing compiled gems for application..."
-/opt/%{name}/bin/gem install --no-rdoc --no-ri thin || true
+/opt/%{name}/bin/gem list thin | grep thin &> /dev/null || /opt/%{name}/bin/gem install --no-rdoc --no-ri thin || true
 
 
 %files

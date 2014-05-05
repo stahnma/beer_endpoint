@@ -120,8 +120,12 @@ echo "Installing compiled gems for application..."
 %files
 %doc %{name}-%{version}/LICENSE %{name}-%{version}/README.md
 /opt/%{name}
+%{_sysconfdir}/init.d/%{name}
 
 
 %changelog
+* Mon May 05 2014 Michael Stahnke <stahnma@puppetlabs.com> - 0.0.2-1
+- Add an init script
+
 * Sun Nov 17 2013 Michael Stahnke <stahnma@puppetlabs.com> - 0.0.1-1
 - Initial Build

@@ -23,6 +23,7 @@ install:
 	install -p -m644 conf/$(PKGNAME).conf $(APACHE_DIR)
 	cp -pr htdocs $(DATADIR)
 	cp -pr scripts/* $(CRON_DIR)
+	cp -pr $(NAME).init $(CONFDIR)/init.d/
 
 tarball:
 	mkdir -p $(TAR_TMP_DIR)/$(PKGNAME)-$(VERSION)

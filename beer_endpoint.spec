@@ -105,6 +105,8 @@ mkdir -p $RPM_BUILD_ROOT/opt/%{name}/app/views
 cp -pr %{name}-%{version}/app.rb $RPM_BUILD_ROOT/opt/%{name}/app
 cp -pr %{name}-%{version}/views $RPM_BUILD_ROOT/opt/%{name}/app
 cp -pr %{name}-%{version}/public $RPM_BUILD_ROOT/opt/%{name}/public
+mkdir -p $RPM_BUILD_ROOT%{_initdir}
+cp -pr %{name}.init $RPM_BUILD_ROOT%{_initdir}
 
 
 # Fix shebang line of scripts

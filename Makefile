@@ -19,11 +19,11 @@ VERSION=$(shell git describe | sed -e 's/-/\./g')
 TARBALL=$(PKGNAME)-$(VERSION).tar.gz
 
 install:
-	mkdir -p {$(DATADIR),$(CONFDIR),$(APACHE_DIR),$(CRON_DIR),$(CONFDIR)/init.d/}
+	mkdir -p {$(DATADIR),$(CONFDIR),$(APACHE_DIR),$(CRON_DIR),$(CONFDIR)init.d/}
 	install -p -m644 conf/$(PKGNAME).conf $(APACHE_DIR)
 	cp -pr htdocs $(DATADIR)
 	cp -pr scripts/* $(CRON_DIR)
-	cp -pr $(NAME).init $(CONFDIR)/init.d/
+	cp -pr $(PKGNAME).init $(CONFDIR)init.d/
 
 tarball:
 	mkdir -p $(TAR_TMP_DIR)/$(PKGNAME)-$(VERSION)
@@ -39,7 +39,8 @@ uninstall:
 clean:
 	rm -f $(TARBALL)  *.rpm
 	rm -rf BUILD SRPMS RPMS SPECS SOURCES
-	rm -rf ./rpmbuild-* ./tarball-*
+	rm -rf ./rpmbuild-* ./$(PKGNAME)-*tar.gz
+
 
 
 srpm: tarball

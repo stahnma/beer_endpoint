@@ -4,49 +4,58 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"
     <meta http-equiv="imagetoolbar" content="no">
     <meta http-equiv="content-language" content="EN">
-    <meta charset="utf-8" />
-    <link type="text/css" rel="stylesheet" href="1.css" media="all" />
-    <link type="text/css" rel="stylesheet" href="2.css" media="all" />
-    <link type="text/css" rel="stylesheet" href="3.css" media="all" />
-    <link type="text/css" rel="stylesheet" href="4.css" media="screen" />
-    <link type="text/css" rel="stylesheet" href="5.css" media="all" />
-    <link type="text/css" rel="stylesheet" href="6.css" media="all" />
-    <link type="text/css" rel="stylesheet" href="7.css" media="all" />
-    <link type="text/css" rel="stylesheet" href="8.css" media="all" />
     <meta http-equiv="refresh" content="300">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
   <body>
 
-    <table cellpadding="5" cellspacing="0" border="0">
-      <tr>
-       <td colspan=100%>
+ <div class="jumbotron">
+      <div class="container">
          <img src="http://puppetlabs.com/sites/default/files/PL_logo_horizontal_RGB_0.svg" height="104" width="400"/> <font size=7>Office Kegs</font>
-       </td>
-      </tr>
-      <tr>
+  </div>
+</div>
+
+      <div class="row">
           <% count = 0 %>
           <% @kegerator.each do |keg| %>
           <% count = count +1 %>
-        <td align="center" valign="top">
-          <table cellpadding="0" cellspacing="0" border="0" style="border:3px; border-color: #FFFFFF; border-style:solid;">
-              <td><b><%= keg[:tap] %></b></td>
-            </tr>
-            <tr>
-                <td colspan="2" width="100%" align="left" valign="top" style="padding:10px; margin:0px;">
+        <div class="col-lg-2">
+          <h2><%= keg[:tap] %></h2>
+   
+<p>
                 <h2><%= keg[:brewery] %></h2>
                 <h1><%= keg[:beer_name] %></h1>
-                Style: <%= keg[:style] %> <br/>
+                Style: <%= keg[:style] %> <br />
                 Beer Advocate: <a href='<%= keg[:link] %>'>Link</a> <br />
-                Abv: <%= keg[:abv].gsub('%', '') %>% <br />
-                Tap Date: <%= keg[:tap_date] %><br />
-              </td>
-          </table>
-        </td>
-          <% end %>
-      <tr>
-          <td colspan=100% style="font-size:10px;text-align:center;">&copy; <%= Time.now.year %> Kerminator Frogbot and <a href='http://twitter.com/stahnma'>@stahnma</a> | Find the source on <a href='http://github.com/stahnma/beer_endpoint'>github.</a></td>
-        </td>
-      </tr>
-    </table>
+                Abv: <%= keg[:abv].gsub('%', '') %>%  <br />
+                Tap Date: <%= keg[:tap_date] %> <br />
+<br />
+</p>
+
+          <p><a href="#" class="btn btn-primary btn-xs"><i class="icon-white icon-exclamation-sign"></i><%= keg[:tap] -%> is Empty</a></p>
+
+        </div>
+<% end -%>
+     </div>
+
+<div class="footer">
+    <p style="font-size:10px;">&copy; <%= Time.now.year %> Kerminator Frogbot and <a href='http://twitter.com/stahnma'>@stahnma</a> | Find the source on <a href='http://github.com/stahnma/beer_endpoint'>github.</a></p>
+</div>
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

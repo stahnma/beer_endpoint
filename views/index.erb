@@ -21,39 +21,42 @@
   </head>
   <body>
 
- <div class="jumbotron">
-      <div class="container">
-         <img src="http://puppetlabs.com/sites/default/files/PL_logo_horizontal_RGB_0.svg" height="104" width="400"/> <font size=7>Office Kegs</font>
-  </div>
-</div>
+       <div class="jumbotron">
+	    <div class="container">
+	       <img src="http://puppetlabs.com/sites/default/files/PL_logo_horizontal_RGB_0.svg" height="104" width="400"/> <font size=7>Office Kegs</font>
+	    </div>
+      </div>
 
-      <div class="row">
-          <% count = 0 %>
-          <% @kegerator.each do |keg| %>
-          <% count = count +1 %>
-        <div class="col-lg-2">
-          <h2><%= keg[:tap] %></h2>
-   
-<p>
-                <h2><%= keg[:brewery] %></h2>
-                <h1><%= keg[:beer_name] %></h1>
-                Style: <%= keg[:style] %> <br />
-                Beer Advocate: <a href='<%= keg[:link] %>'>Link</a> <br />
-                Abv: <%= keg[:abv].gsub('%', '') %>%  <br />
-                Tap Date: <%= keg[:tap_date] %> <br />
-<br />
-</p>
 
-          <p><a href="#" class="btn btn-primary btn-xs"><i class="icon-white icon-exclamation-sign"></i><%= keg[:tap] -%> is Empty</a></p>
-
-        </div>
-<% end -%>
+<div class="container">
+	<div class="row">
+      <div id="equalheight">      
+  
+	<% count = 0 -%>
+	<% @kegerator.each do |keg| -%>
+	<% count = count +1 -%>
+          <div class="col-12 col-lg-3 col-md-3 col-sm-3 col-xs-12 demo">
+              <div class="info-block" style="height=100%">
+		  <h2><%= keg[:tap] -%></h2>
+		  <h2><%= keg[:brewery] -%></h2>
+		  <h1><%= keg[:beer_name] -%></h1>
+		  Style: <%= keg[:style] -%> <br />
+		  Beer Advocate: <a href='<%= keg[:link] -%>'>Link</a> <br />
+		  Abv: <%= keg[:abv].gsub('%', '') -%>%  <br />
+		  Tap Date: <%= keg[:tap_date] -%> <br />
+		  <br />
+		  <p><a href="#" style="position:absolute;left:20;bottom:0;"class="btn btn-primary btn-xs"><i class="icon-white icon-exclamation-sign"></i><%= keg[:tap] -%> is Empty</a></p>
+	      </div>
+          </div>  
+        <% end -%>
+      </div>
+     </div>
      </div>
 
-<div class="footer">
-    <p style="font-size:10px;">&copy; <%= Time.now.year %> Kerminator Frogbot and <a href='http://twitter.com/stahnma'>@stahnma</a> | Find the source on <a href='http://github.com/stahnma/beer_endpoint'>github.</a></p>
-</div>
- <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <div class="footer">
+      <p style="font-size:10px;">&copy; <%= Time.now.year -%> Kerminator Frogbot and <a href='http://twitter.com/stahnma'>@stahnma</a> | Find the source on <a href='http://github.com/stahnma/beer_endpoint'>github.</a></p>
+  </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>

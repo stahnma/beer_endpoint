@@ -5,7 +5,7 @@ require "google_drive"
 require 'json'
 require 'sinatra'
 
-GOOGLE_DRIVE_USERNAME= ENV['GOOGLE_DRIVE_USERNAME'] || 'stahnma@puppetlabs.com'
+GOOGLE_DRIVE_USERNAME= ENV['GOOGLE_DRIVE_USERNAME'] || nil
 GOOGLE_DRIVE_PASSWORD= ENV['GOOGLE_DRIVE_PASSWORD'] || nil
 # https://docs.google.com/a/puppetlabs.com/spreadsheet/ccc?key=0AkXn6HayGVSrdEt1Y091QXppdXhLOGNYZVdmdEpoQXc
 GOOGLE_BEER_SPREADSHEET_ID='0AkXn6HayGVSrdEt1Y091QXppdXhLOGNYZVdmdEpoQXc'

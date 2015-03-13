@@ -49,8 +49,9 @@ def whats_on_tap(session)
     beertap[:beer_name] = row[2]
     beertap[:style]     = row[3]
     beertap[:abv]       = row[4]
-    beertap[:link]      = row[5]
-    beertap[:tap_date]  = row[6]
+    beertap[:ibu]       = row[5]
+    beertap[:link]      = row[6]
+    beertap[:tap_date]  = row[7]
     kegerator << beertap
   end
   kegerator

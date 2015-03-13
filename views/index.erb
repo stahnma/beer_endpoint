@@ -37,7 +37,8 @@
                 <h1><%= keg[:beer_name] %></h1>
                 Style: <%= keg[:style] %> <br/>
                 Beer Advocate: <a href='<%= keg[:link] %>'>Link</a> <br />
-                Abv: <%= keg[:abv].gsub('%', '') %>% <br />
+                ABV: <%= keg[:abv].gsub('%', '') %>% <br />
+                <% unless keg[:ibu].empty? %>IBU: <%= keg[:ibu] %> <br /><% end -%>
                 Tap Date: <%= keg[:tap_date] %><br />
               </td>
           </table>

@@ -5,7 +5,7 @@ image:
 
 
 run:
-	docker run -d -e "GOOGLE_DRIVE_PASSWORD=$(GOOGLE_DRIVE_PASSWORD)" -e "GOOGLE_DRIVE_USERNAME=$(GOOGLE_DRIVE_USERNAME)" --restart=on-failure:10  --name beer_endpoint -p 8334:8334  centos/beer_endpoint
+	docker run -d --restart=on-failure:10  --name beer_endpoint -p 8334:8334  centos/beer_endpoint
 
 clean:
 	docker stop beer_endpoint || true

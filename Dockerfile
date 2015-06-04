@@ -10,8 +10,7 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.n
 # anybody that access to the correct spreadsheet can run/use the application.
 # It's just easier.
 RUN yum -y install ruby rubygems ruby-devel rubygem-nokogiri rubygem-bundler rubygem-json gcc make gcc-c++
-# There are no rpms for google_drive, sinatra or thin yet in EL/EPEL7
-RUN gem install --no-rdoc --no-ri -v 0.3.6 google_drive
+# There are no rpms for sinatra or thin yet in EL/EPEL7
 RUN gem install --no-rdoc --no-ri sinatra thin
 
 # The application will run out of /beer_endpoint as the user beer_endpoint

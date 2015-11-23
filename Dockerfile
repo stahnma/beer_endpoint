@@ -2,13 +2,14 @@ FROM centos:latest
 MAINTAINER stahnma@fedoraproject.org
 
 # Setup EPEL
-RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+RUN yum -y install epel-release
 # Now setup the application
 # We need 0.3.6 of google drive because after that, you need oauth2, which
 # means you need to enable the developer console per account inside each google
 # account, and then setup a project etc. With the old password based way,
 # anybody that access to the correct spreadsheet can run/use the application.
 # It's just easier.
+RUN yum clean all; yum -y update
 RUN yum -y install ruby rubygems ruby-devel rubygem-nokogiri rubygem-bundler rubygem-json gcc make gcc-c++
 # There are no rpms for sinatra or thin yet in EL/EPEL7
 RUN gem install --no-rdoc --no-ri sinatra thin
@@ -17,7 +18,6 @@ RUN gem install --no-rdoc --no-ri sinatra thin
 RUN mkdir -p /beer_endpoint
 ADD  app.rb /beer_endpoint/app.rb
 COPY views /beer_endpoint/views
-COPY public /beer_endpoint/public
 RUN useradd beer_endpoint
 RUN chown -R beer_endpoint:beer_endpoint /beer_endpoint
 EXPOSE 8334

@@ -9,10 +9,12 @@ RUN yum -y install epel-release
 # account, and then setup a project etc. With the old password based way,
 # anybody that access to the correct spreadsheet can run/use the application.
 # It's just easier.
-RUN yum clean all; yum -y update
+RUN yum clean all
 RUN yum -y install ruby rubygems ruby-devel rubygem-nokogiri rubygem-bundler rubygem-json gcc make gcc-c++
 # There are no rpms for sinatra or thin yet in EL/EPEL7
 RUN gem install --no-rdoc --no-ri sinatra thin
+RUN yum -y install openssl-libs
+RUN yum -y upgrade
 
 # The application will run out of /beer_endpoint as the user beer_endpoint
 RUN mkdir -p /beer_endpoint

@@ -6,11 +6,13 @@ require 'sinatra'
 require 'open-uri'
 
 # this is the second tab of the spreasheet, for testing changes to the input data
-#SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&id=1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY&gid=2047460198'
+SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&id=1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY&gid=2047460198'
 
 # this is the 'live' tap list
-SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&id=1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY&gid=0'
-BEER_FIELDS = [:tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date]
+#SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&id=1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY&gid=0'
+BEER_FIELDS =  [:tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date]
+DEFAULT_VALS = ["Tap 16", "Empty", "Sadness", "Bud Lite Ultra Lime", "n/a",
+                "n/a", "http://untappd.com", "1/12/1997"]
 
 set :port, 8334
 set :bind, '0.0.0.0'
@@ -26,7 +28,7 @@ get '/api/v1/beer' do
   whats_on_tap(session).to_json
 end
 
-def validate(input,default)
+def validate(default,input)
   if input.nil? or input.empty?
     default
   else
@@ -41,15 +43,10 @@ def whats_on_tap(session)
     values = row.split("\t").map(&:strip)
     v = []
     # :tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date
-    v[0] = validate(values[0],"Tap 16")         # green dragon secret tap
-    v[1] = validate(values[1],"Empty")
-    v[2] = validate(values[2],"Sadness")
-    v[3] = validate(values[3],"Bud Lite Ultra Lime")
-    v[4] = validate(values[4],"n/a")          # ABV
+    DEFAULT_VALS.zip(values).each do |default,value|
+      v << validate(default,value)
+    end
     v[4].gsub!('%','')     # strip % to avoid confusing erb
-    v[5] = validate(values[5],"n/a")          # IBU
-    v[6] = validate(values[6],"http://untappd.com/")
-    v[7] = validate(values[7],"1/12/1997")
     Hash[BEER_FIELDS.zip(v)]
   end
 end

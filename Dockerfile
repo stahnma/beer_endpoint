@@ -12,7 +12,8 @@ RUN yum -y install epel-release
 RUN yum clean all
 RUN yum -y install ruby rubygems ruby-devel rubygem-nokogiri rubygem-bundler rubygem-json gcc make gcc-c++
 # There are no rpms for sinatra or thin yet in EL/EPEL7
-RUN gem install --no-rdoc --no-ri sinatra thin
+RUN gem install --no-rdoc --no-ri sinatra thin shotgun
+RUN ln -s /usr/local/share/gems/gems/shotgun-0.9.1/bin/shotgun /usr/bin/shotgun
 RUN yum -y install openssl-libs
 RUN yum -y upgrade
 
@@ -23,4 +24,4 @@ COPY views /beer_endpoint/views
 RUN useradd beer_endpoint
 RUN chown -R beer_endpoint:beer_endpoint /beer_endpoint
 EXPOSE 8334
-ENTRYPOINT ruby /beer_endpoint/app.rb
+CMD ruby /beer_endpoint/app.rb

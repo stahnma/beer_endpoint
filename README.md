@@ -3,7 +3,7 @@ beer_endpoint
 
 Beer Endpoint for Kegs at Puppet Labs.
 
-The production deployment can normally be found at [http://puppetlabs.com/beer](http://puppetlabs.com/beer)
+The production deployment can normally be found at [http://puppet.com/beer](http://puppet.com/beer)
 
 # How does it work?
 

@@ -2,8 +2,9 @@
 
 require "rubygems"
 require 'json'
-require 'sinatra'
 require 'open-uri'
+require 'tilt/erb'
+require 'sinatra'
 
 # this is the second tab of the spreasheet, for testing changes to the input data
 #SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&id=1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY&gid=2047460198'
@@ -17,6 +18,8 @@ DEFAULT_VALS = ["Tap 16", "Empty", "Sadness", "Bud Lite Ultra Lime", "n/a",
 set :port, 8334
 set :bind, '0.0.0.0'
 set :erb, :trim => '-'
+set :static, true
+set :public_folder, Proc.new { File.join(File.dirname(__FILE__), 'public')  }
 
 get '/' do
   @kegerator = whats_on_tap(session)

@@ -1,15 +1,15 @@
 beer_endpoint
 =============
 
-Beer Endpoint for Kegs at Puppet Labs.
+Beer Endpoint for Kegs at Puppet.
 
-The production deployment can normally be found at [http://puppet.com/beer](http://puppet.com/beer)
+The production deployment can normally be found at [https://puppet.com/beer](https://puppet.com/beer)
 
 # How does it work?
 
 This works through a very complex system of talking to a google spreadsheet and
 reading cells. The sheet needs to look a certain way, or this whole thing falls
-apart. Is this useful outside of Puppet Labs? Maybe, but it might require
+apart. Is this useful outside of Puppet? Maybe, but it might require
 edits.
 
 # Actual Deployment

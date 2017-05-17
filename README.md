@@ -24,9 +24,6 @@ Wow, I still hate ruby deployments. In order to "solve" the deployment problem, 
 ## Run the Docker image
 
 
-You'll want to export your `GOOGLE_DRIVE_PASSWORD` and `GOOGLE_DRIVE_USERNAME`
-prior to running:
-
   `make run`
 
 

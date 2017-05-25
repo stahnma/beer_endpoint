@@ -59,7 +59,7 @@ h4{
   font-weight:500;
 }
 
-#tap-table {
+.tap-table {
   margin-left:0.8em;
   width:25%;
   height:100%;
@@ -70,11 +70,11 @@ h4{
           flex-direction:column;
 }
 
-#tap-table section {
+.tap-table section {
   padding:0.8em;
 }
 
-#tap-table div:last-child {
+.tap-table div:last-child {
   margin-right: 1em;
 }
 

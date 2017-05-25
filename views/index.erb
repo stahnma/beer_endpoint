@@ -2,7 +2,7 @@
   <head>
     <title>The Beer at the Puppet HQ</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/style.css">
     <meta http-equiv="imagetoolbar" content="no">
     <meta http-equiv="content-language" content="EN">
     <meta charset="utf-8" />
@@ -20,7 +20,7 @@
       <% @kegerator.each do |keg| %>
       <% count = count +1 %>
 
-      <div id="tap-table">
+      <div class="tap-table">
         <section>
           <h4><%= keg[:tap].upcase %></h4>
           <h3><%= keg[:brewery] %></h3>

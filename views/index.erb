@@ -21,18 +21,16 @@
       <% count = count +1 %>
 
       <div class="tap-table">
-        <section>
-          <h4><%= keg[:tap].upcase %></h4>
-          <h3><%= keg[:brewery] %></h3>
-          <h2><%= keg[:beer_name] %></h2>
-          <div class="beer-data">
-            <p><span class="label">Style:</span> <span class="value"><%= keg[:style] %></span></p>
-            <p><span class="label">ABV:</span> <span class="value"><%= keg[:abv] %>%</p>
-            <p><span class="label">IBU:</span> <span class="value"><%= keg[:ibu] %></span></p>
-            <p><span class="label">Tap Date:</span> <span class="value"><%= keg[:tap_date] %></span></p>
-            <p><span class="label">Beer Advocate:</span> <span class="value"><a href='<%= keg[:link] %>'>Link</a></p>
-          </div>
-        </section>
+        <h4><%= keg[:tap].upcase %></h4>
+        <h3><%= keg[:brewery] %></h3>
+        <h2><%= keg[:beer_name] %></h2>
+        <div class="beer-data">
+          <p><span class="label">Style:</span> <span class="value"><%= keg[:style] %></span></p>
+          <p><span class="label">ABV:</span> <span class="value"><%= keg[:abv] %>%</p>
+          <p><span class="label">IBU:</span> <span class="value"><%= keg[:ibu] %></span></p>
+          <p><span class="label">Tap Date:</span> <span class="value"><%= keg[:tap_date] %></span></p>
+          <p><span class="label">Beer Advocate:</span> <span class="value"><a href='<%= keg[:link] %>'>Link</a></p>
+        </div>
       </div>
 
       <% end %>

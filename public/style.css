@@ -61,6 +61,7 @@ h4{
   margin-left:0.8em;
   padding: 0.8em;
   background:#fff;
+  box-shadow: 0 0 .5em #dedede;
 }
 .tap-table:last-child {
   margin-right: .8em;
@@ -68,6 +69,12 @@ h4{
 
 .beer-data a {
   color: rgba(255,174,26,1);
+}
+
+.empty,
+.empty .beer-data a {
+  background-color: #222222;
+  color: #666;
 }
 
 .label {

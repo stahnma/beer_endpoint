@@ -16,11 +16,9 @@
     </header>
 
     <div class="vertical-container">
-      <% count = 0 %>
       <% @kegerator.each do |keg| %>
-      <% count = count +1 %>
 
-      <div class="tap-table">
+      <div class="<%= keg[:vol] == 'empty' ? 'tap-table empty' : 'tap-table' %>">
         <h4><%= keg[:tap].upcase %></h4>
         <h3><%= keg[:brewery] %></h3>
         <h2><%= keg[:beer_name] %></h2>

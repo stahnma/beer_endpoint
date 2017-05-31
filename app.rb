@@ -12,7 +12,7 @@ require 'sinatra'
 # this is the 'live' tap list
 SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&id=1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY&gid=0'
 BEER_FIELDS =  [:tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date, :vol]
-DEFAULT_VALS = ["Tap 16", "Empty", "Sadness", "Bud Lite Ultra Lime", "n/a",
+DEFAULT_VALS = ["Tap 16", "Temporarily", "Offline", "n/a", "n/a",
                 "n/a", "http://untappd.com", "1/12/1997", "empty"]
 
 set :port, 8334

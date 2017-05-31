@@ -1,0 +1,92 @@
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background:rgba(240,240,240,1);
+  font-family: "Helvetica Neue",Helvetica,sans-serif;
+}
+
+a,a:link {
+  color: black;
+  font-weight: 400;
+}
+
+header img{
+  height:1em;
+  margin-right:0.1em;
+}
+
+p {
+  margin: .2em 0;
+}
+
+h1 {
+  font-size: 1.9em;
+  letter-spacing: -0.9;
+  margin-left:0.5em;
+}
+
+h2 {
+  font-size: 2em;
+  margin: 0.3em 0 0 0;
+}
+
+h3 {
+  font-size: 1.6em;
+  margin: 1.0em 0 0 0;
+  opacity: .6;
+}
+
+h4{
+  font-size:0.9em;
+  font-weight:500;
+  margin-top: .8em;
+}
+
+.vertical-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.tap-table,
+.beer-data {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tap-table {
+  margin-left:0.8em;
+  padding: 0.8em;
+  background:#fff;
+  box-shadow: 0 0 .5em #dedede;
+}
+.tap-table:last-child {
+  margin-right: .8em;
+}
+
+.beer-data a {
+  color: rgba(255,174,26,1);
+}
+
+.empty,
+.empty .beer-data a {
+  background-color: #222222;
+  color: #666;
+}
+
+.label {
+  opacity: 0.5;
+}
+
+.value {
+  font-weight: 600;
+}
+
+footer {
+  font-size:10px;
+  text-align:center;
+  padding:1em;
+}

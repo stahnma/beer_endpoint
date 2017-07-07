@@ -7,13 +7,14 @@ require 'tilt/erb'
 require 'sinatra'
 
 # this is the second tab of the spreasheet, for testing changes to the input data
-#SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&id=1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY&gid=2047460198'
+# TAPS_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&gid=1'
 
 # this is the 'live' tap list
-SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&id=1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY&gid=0'
-BEER_FIELDS =  [:tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date, :vol]
+TAPS_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&gid=0'
+ON_DECK_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&gid=382420153'
+BEER_FIELDS =  [:tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date, :vol, :delivery_date]
 DEFAULT_VALS = ["Tap 16", "Temporarily", "Offline", "n/a", "n/a",
-                "n/a", "http://untappd.com", "1/12/1997", "empty"]
+                "n/a", "empty", "1/12/1997", "empty", "1/12/1997"]
 
 set :port, 8334
 set :bind, '0.0.0.0'
@@ -31,6 +32,11 @@ get '/api/v1/beer' do
   whats_on_tap(session).to_json
 end
 
+get '/api/v1/ondeck' do
+  content_type :json
+  whats_on_deck(session).to_json
+end
+
 def validate(default,input)
   if input.nil? or input.empty?
     default
@@ -39,8 +45,8 @@ def validate(default,input)
   end
 end
 
-def whats_on_tap(session)
-  rows = open(SPREADSHEET_URL).each_line
+def parse_sheet(session,url)
+  rows = open(url).each_line
 
   rows.drop(1).map do |row|
     values = row.split("\t").map(&:strip)
@@ -52,4 +58,12 @@ def whats_on_tap(session)
     v[4].gsub!('%','')     # strip % to avoid confusing erb
     Hash[BEER_FIELDS.zip(v)]
   end
+end
+
+def whats_on_tap(session)
+  parse_sheet(session,TAPS_URL)
+end
+
+def whats_on_deck(session)
+  parse_sheet(session,ON_DECK_URL)
 end

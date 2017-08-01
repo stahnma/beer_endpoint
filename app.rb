@@ -49,6 +49,7 @@ def parse_sheet(session,url)
   rows = open(url).each_line
 
   rows.drop(1).map do |row|
+    row.force_encoding('UTF-8')
     values = row.split("\t").map(&:strip)
     v = []
     # :tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date

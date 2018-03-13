@@ -12,9 +12,9 @@ require 'sinatra'
 # this is the 'live' tap list
 TAPS_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&gid=0'
 ON_DECK_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&gid=382420153'
-BEER_FIELDS =  [:tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date, :vol, :delivery_date]
+BEER_FIELDS =  [:tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date, :vol, :delivery_date, :origin]
 DEFAULT_VALS = ["Tap 16", "Temporarily", "Offline", "n/a", "n/a",
-                "n/a", "empty", "1/12/1997", "empty", "1/12/1997"]
+                "n/a", "empty", "1/12/1997", "empty", "1/12/1997", "n/a"]
 
 set :port, 8334
 set :bind, '0.0.0.0'
@@ -52,7 +52,7 @@ def parse_sheet(session,url)
     row.force_encoding('UTF-8')
     values = row.split("\t").map(&:strip)
     v = []
-    # :tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date
+    # :tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date, :vol, :delivery_date, :origin
     DEFAULT_VALS.zip(values).each do |default,value|
       v << validate(default,value)
     end

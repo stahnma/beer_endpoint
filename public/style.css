@@ -44,6 +44,12 @@ h4{
   margin-top: .8em;
 }
 
+h5 {
+  font-size: 1.2em;
+  margin: 0.5em 0 0 0;
+  opacity: .6;
+}
+
 .vertical-container {
   display: flex;
   flex-grow: 1;

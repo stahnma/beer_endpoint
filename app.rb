@@ -24,6 +24,28 @@ set :public_folder, Proc.new { File.join(File.dirname(__FILE__), 'public')  }
 
 get '/' do
   @kegerator = whats_on_tap(session)
+
+  on_deck = whats_on_deck(session).sort_by do |keg|
+    month, day, year = keg[:delivery_date].split('/')
+    [year, month, day]
+  end.each_with_object({:ipa => [], :cider => [], :other => [], :kombucha => []}) do |keg, styles|
+    case keg[:style]
+    when /ipa/i
+      styles[:ipa] << keg
+    when /cider/i
+      styles[:cider] << keg
+    when /kombucha/i
+      styles[:kombucha] << keg
+    else
+      styles[:other] << keg
+    end
+  end
+
+  @kegerator[0][:on_deck] = on_deck[:cider].first
+  @kegerator[1][:on_deck] = on_deck[:ipa].first
+  @kegerator[2][:on_deck] = on_deck[:other].first
+  @kegerator[3][:on_deck] = on_deck[:kombucha].first
+
   erb :index
 end
 

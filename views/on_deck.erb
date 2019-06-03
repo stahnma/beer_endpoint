@@ -1,0 +1,13 @@
+<div class="tap-table on-deck">
+  <h3><%= keg[:brewery] %></h3>
+  <h2><%= keg[:beer_name] %></h2>
+  <h5><%= keg[:origin] %></h5>
+  <div class="beer-data">
+    <p><span class="label">Style:</span> <span class="value"><%= keg[:style] %></span></p>
+    <p><span class="label">ABV:</span> <span class="value"><%= keg[:abv] %>%</p>
+    <p><span class="label">IBU:</span> <span class="value"><%= keg[:ibu] %></span></p>
+    <% if keg[:link] != 'empty' %>
+      <p><span class="label"><%= keg[:link].include?('untappd.com') ? 'Untappd:' : 'Beer Advocate:' %></span> <span class="value"><a href='<%= keg[:link] %>'>Link</a></p>
+    <% end %>
+  </div>
+</div>

@@ -12,9 +12,9 @@ require 'sinatra'
 # this is the 'live' tap list
 TAPS_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&gid=0'
 ON_DECK_URL = 'https://docs.google.com/spreadsheets/d/1SipVaaHNzAbI0F4C-wk_TPxxf8lVG4r4q-nqsI-uQhY/export?format=tsv&gid=382420153'
-BEER_FIELDS =  [:tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date, :vol, :delivery_date, :origin]
+BEER_FIELDS =  [:tap, :brewery, :beer_name, :style, :abv, :ibu, :link, :tap_date, :vol, :delivery_date, :origin, :tap_destiny]
 DEFAULT_VALS = ["Tap 16", "Temporarily", "Offline", "n/a", "n/a",
-                "n/a", "empty", "1/12/1997", "empty", "1/12/1997", "n/a"]
+                "n/a", "empty", "1/12/1997", "empty", "1/12/1997", "n/a", "???"]
 
 set :port, 8334
 set :bind, '0.0.0.0'

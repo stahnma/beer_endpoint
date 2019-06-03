@@ -3,7 +3,7 @@ MAINTAINER stahnma@fedoraproject.org
 
 
 #RUN yum -y install ruby rubygems ruby-devel rubygem-nokogiri rubygem-bundler rubygem-json gcc make gcc-c++
-RUN gem install  --no-rdoc --no-ri sinatra thin shotgun nokogiri json bundler
+RUN gem install  --no-doc sinatra thin shotgun nokogiri json bundler
 EXPOSE 8334
 ## The application will run out of /beer_endpoint as the user beer_endpoint
 RUN useradd beer_endpoint

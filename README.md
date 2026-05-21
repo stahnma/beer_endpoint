@@ -12,43 +12,36 @@ reading cells. The sheet needs to look a certain way, or this whole thing falls
 apart. Is this useful outside of Puppet? Maybe, but it might require
 edits.
 
-# Actual Deployment
+# Build & Run
 
-Wow, I still hate ruby deployments. In order to "solve" the deployment problem, I'm trying out docker here.
+This is a single static Go binary. The HTML template and static assets are
+embedded, so the binary has no runtime file dependencies.
 
-## Build the Docker image
+## Build
 
-  `make image`
+  `make build`
 
+or directly:
 
-## Run the Docker image
+  `go build -o beer_endpoint .`
 
+## Run
 
-  `make run`
+  `./beer_endpoint`
 
+The server listens on `:8334` by default. Override with `-addr`:
 
-## View the logs
+  `./beer_endpoint -addr :9000`
 
+# Endpoints
 
-If you're using my makefile for shortcuts, then your container will be named
-beer_endpoint.
-
-  `docker logs beer_endpoint`
-
-
-## Clean up your mess
-
-  `make clean`
-
-This will stop the running container and remove it from your system. This is
-nice when doing development and iterating.
-
+  * `GET /` — HTML view of what's on tap
+  * `GET /api/v1/beer` — JSON of what's on tap
+  * `GET /api/v1/ondeck` — JSON of what's on deck
 
 # Edits
 
-If you'd like to fix/improve anything, please do. I'm hoping the docker model
-makes this a little easier for people doing development to send up UI fixes or
-patches or whatnot.
+If you'd like to fix/improve anything, please do.
 
 # License
 

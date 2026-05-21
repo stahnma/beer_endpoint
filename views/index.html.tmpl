@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>The Beer at the Puppet HQ</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="content-language" content="EN">
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="300">
+  </head>
+
+  <body>
+
+    <header>
+      <h1><img src="/puppet_mark.png" alt="Puppet" />puppet office kegs</h1>
+    </header>
+
+    <div class="vertical-container">
+      {{- range .Kegerator }}
+
+      <div class="{{ if eq .Vol "empty" }}tap-table empty{{ else }}tap-table{{ end }}">
+        <h4>{{ upper .Tap }}</h4>
+        <h3>{{ .Brewery }}</h3>
+        <h2>{{ .BeerName }}</h2>
+        <h5>{{ .Origin }}</h5>
+        <div class="beer-data">
+          <p><span class="label">Style:</span> <span class="value">{{ .Style }}</span></p>
+          <p><span class="label">ABV:</span> <span class="value">{{ .ABV }}%</p>
+          <p><span class="label">IBU:</span> <span class="value">{{ .IBU }}</span></p>
+          <p><span class="label">Tap Date:</span> <span class="value">{{ .TapDate }}</span></p>
+          {{- if ne .Link "empty" }}
+          <p><span class="label">{{ if contains .Link "untappd.com" }}Untappd:{{ else }}Beer Advocate:{{ end }}</span> <span class="value"><a href='{{ .Link }}'>Link</a></p>
+          {{- end }}
+        </div>
+      </div>
+      {{- end }}
+    </div>
+
+    <footer>
+      &copy; {{ .Year }} Kerminator Frogbot and <a href='http://twitter.com/stahnma'>@stahnma</a> | Find the source on <a href='http://github.com/stahnma/beer_endpoint'>github.</a>
+    </footer>
+  </body>
+</html>
